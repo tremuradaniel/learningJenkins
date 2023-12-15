@@ -7,9 +7,11 @@ node {
    }
    stage('test') {
      nodejs(nodeJSInstallationName: 'nodejs') {
-       sh 'cd ${WORKSPACE}/docker-demo'
-       sh 'npm install --only=dev'
-       sh 'npm test'
+       sh '''
+        cd ${WORKSPACE}/docker-demo &&
+        npm install --only=dev &&
+        npm test
+      '''
      }
    }
   //  stage('docker build/push') {
